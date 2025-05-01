@@ -1,0 +1,59 @@
+# Header
+header_logo: KanouOliviaWood
+header_home: Accueil
+header_products: Produits
+
+# Hero Section
+hero_title: OBJETS EN BOIS D'OLIVIER
+hero_subtitle: PRODUITS ARTISANAUX 100% NATURELS
+hero_cta_catalog: Télécharger le Catalogue
+hero_cta_workshop: Découvrir notre atelier
+
+# Workshop Section
+workshop_title: ATELIER EN LIGNE
+workshop_quality_title: QUALITÉ DE FABRICATION
+workshop_quality_content: Nos produits sont travaillés à l'unité avec une exigence de qualité, fait-main, un savoir-faire unique transmis de génération en génération.
+workshop_price_title: PRIX D'ATELIER
+workshop_price_content: Nos prix sont réfléchis et étudiés selon la pièce, ses dimensions et la complexité de sa réalisation dans notre atelier artisanal.
+
+# Natural Section
+natural_title: SIMPLEMENT NATUREL
+natural_subtitle: Bois d'olivier naturel
+natural_content: Le bois d'olivier est une matière naturelle, un bois très compact et très résistant. Il est plus ou moins clair, ses veines sont irrégulières et lui confèrent toute sa noblesse une fois fini et poli. C'est un bois plus dense que le hêtre, ceci lui confère une plus grande résistance et des caractéristiques hygiéniques lui permettant d'être utilisé en cuisine. Il ne se rompt pas et il n'absorbe ni les liquides, ni les bactéries, ni les mauvaises odeurs.
+natural_catalog_button: Télécharger le Catalogue
+
+# Testimonial Section
+testimonial_content: "Merci naturolive, vos pièces sont magnifiques, les bols ont déjà pris place dans ma cuisine et sont tout simplement sublimes..."
+testimonial_author: LAETITIA, FRANCE
+
+# About Section
+about_title: Notre Histoire
+about_content: Depuis plus de 10 ans, nous créons des pièces uniques en bois, alliant tradition et modernité. Notre atelier est situé au cœur de la France, où nous travaillons avec des matériaux locaux et durables.
+
+# Products Section
+products_title: Nos Créations
+products_content: Explorez notre collection de meubles et objets en bois, chacun fabriqué à la main avec le plus grand soin. Des pièces uniques qui s'intègrent parfaitement dans votre intérieur.
+
+# Contact Section
+contact_title: Contactez-nous
+contact_content: Pour toute question ou commande spéciale, n'hésitez pas à nous contacter. Nous sommes à votre écoute pour réaliser vos projets sur mesure.
+
+# Contact Information
+phone_number: +216 58 415 520
+email: contact@oliviawood.com
+address: 123 Rue du Bois, 75000 Paris, France
+hours: Lun-Sam: 9h-18h
+
+# Call to Action
+cta_title: Intéressé par nos produits ?
+cta_content: Contactez-nous pour plus d'informations sur nos produits en bois d'olivier. Notre équipe est à votre disposition pour répondre à toutes vos questions.
+cta_button: Appelez-nous maintenant
+cta_phone: +216 58 415 520
+
+# Footer
+footer_about_title: À propos
+footer_about_content: Votre spécialiste en artisanat de bois de qualité.
+footer_contact_title: Contact
+footer_contact_content: Besoin d'informations ? Contactez-nous !
+footer_quick_links_title: Liens Rapides
+footer_rights: © 2024 KanouOliviaWood. Tous droits réservés. 

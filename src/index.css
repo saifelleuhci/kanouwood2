@@ -1,0 +1,107 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 30 6% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 6% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 6% 25%;
+
+    --primary: 114 10% 56%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 30 10% 91%;
+    --secondary-foreground: 30 6% 25%;
+
+    --muted: 30 10% 91%;
+    --muted-foreground: 30 6% 40%;
+
+    --accent: 30 10% 91%;
+    --accent-foreground: 30 6% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 30 10% 85%;
+    --input: 30 10% 85%;
+    --ring: 30 6% 25%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 30 6% 15%;
+    --foreground: 40 33% 98%;
+
+    --card: 30 6% 15%;
+    --card-foreground: 40 33% 98%;
+
+    --popover: 30 6% 15%;
+    --popover-foreground: 40 33% 98%;
+
+    --primary: 114 10% 56%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 30 6% 25%;
+    --secondary-foreground: 40 33% 98%;
+
+    --muted: 30 6% 25%;
+    --muted-foreground: 30 6% 70%;
+
+    --accent: 30 6% 25%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 33% 98%;
+
+    --border: 30 6% 25%;
+    --input: 30 6% 25%;
+    --ring: 30 10% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+/* Custom classes */
+@layer components {
+  .btn-primary {
+    @apply bg-transparent border-2 border-olive hover:bg-olive hover:text-white transition-colors duration-300
+           py-3 px-6 uppercase tracking-wider text-sm font-medium;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-olive text-olive hover:bg-olive hover:text-white 
+           transition-colors duration-300 py-2 px-5 uppercase tracking-wider text-sm font-medium;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-playfair font-medium text-center mb-8 text-foreground;
+  }
+
+  .section-subtitle {
+    @apply text-lg font-normal text-center mb-12 tracking-wide uppercase;
+  }
+}
