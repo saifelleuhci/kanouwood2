@@ -28,27 +28,41 @@ const NaturalSection = () => {
   return (
     <section className="py-20 bg-white">
       <div className="container max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-playfair font-bold mb-4 text-olive-dark">
-            {textContent?.natural.title || 'SIMPLEMENT NATUREL'}
-          </h2>
-          <h3 className="text-2xl font-playfair mb-6 text-olive">
-            {textContent?.natural.subtitle || 'Bois d\'olivier naturel'}
-          </h3>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            {textContent?.natural.content || 'Le bois d\'olivier est une matière naturelle, un bois très compact et très résistant. Il est plus ou moins clair, ses veines sont irrégulières et lui confèrent toute sa noblesse une fois fini et poli. C\'est un bois plus dense que le hêtre, ceci lui confère une plus grande résistance et des caractéristiques hygiéniques lui permettant d\'être utilisé en cuisine. Il ne se rompt pas et il n\'absorbe ni les liquides, ni les bactéries, ni les mauvaises odeurs.'}
-          </p>
-        </div>
-        <div className="text-center">
-          <a 
-            href="/catalogue.pdf"
-            className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Download size={24} />
-            {textContent?.natural.catalog_button || 'Télécharger le Catalogue'}
-          </a>
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+          {/* Image */}
+          <div className="md:w-1/2">
+            <div className="relative overflow-hidden rounded-lg shadow-xl">
+              <img 
+                src="https://images.unsplash.com/photo-1551907234-fb773fb08a2a?q=80&w=1974&auto=format&fit=crop" 
+                alt="Bois d'olivier naturel" 
+                className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+          </div>
+          
+          {/* Text Content */}
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-playfair font-bold mb-4 text-olive-dark">
+              {textContent?.natural.title || 'SIMPLEMENT NATUREL'}
+            </h2>
+            <h3 className="text-2xl font-playfair mb-6 text-olive">
+              {textContent?.natural.subtitle || 'Bois d\'olivier naturel'}
+            </h3>
+            <p className="text-gray-600 mb-8">
+              {textContent?.natural.content || 'Le bois d\'olivier est une matière naturelle, un bois très compact et très résistant. Il est plus ou moins clair, ses veines sont irrégulières et lui confèrent toute sa noblesse une fois fini et poli. C\'est un bois plus dense que le hêtre, ceci lui confère une plus grande résistance et des caractéristiques hygiéniques lui permettant d\'être utilisé en cuisine. Il ne se rompt pas et il n\'absorbe ni les liquides, ni les bactéries, ni les mauvaises odeurs.'}
+            </p>
+            <div className="text-center md:text-left">
+              <a 
+                href="/catalogue.pdf"
+                className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download size={24} />
+                {textContent?.natural.catalog_button || 'Télécharger le Catalogue'}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
