@@ -71,16 +71,16 @@ const Admin = () => {
       }
 
       // Validate required fields
-      if (!product.name || !product.category || !product.image) {
-        throw new Error('Name, category, and image are required');
+      if (!product.name || !product.image) {
+        throw new Error('Name and image are required');
       }
 
       const { data, error } = await supabase
         .from('products')
         .insert([{
-          ...product,
+          name: product.name,
           price: product.price || 0,
-          featured: product.featured || false,
+          image: product.image,
         }])
         .select()
         .single();
@@ -108,7 +108,11 @@ const Admin = () => {
 
       const { data, error } = await supabase
         .from('products')
-        .update(updates)
+        .update({
+          name: updates.name,
+          price: updates.price,
+          image: updates.image,
+        })
         .eq('id', id)
         .select()
         .single();

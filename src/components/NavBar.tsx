@@ -50,8 +50,9 @@ const NavBar: React.FC = () => {
     <nav className="bg-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-playfair font-bold text-olive">
-            {textContent?.header.logo || 'KanouOliviaWood'}
+          <Link to="/" className="flex items-center gap-2 text-olive font-playfair font-bold text-xl">
+            <img src="/logo-removebg-preview.png" alt="Socrate Wood" className="h-10 w-10 object-contain" />
+            {textContent?.header.logo || 'SOCRATE WOOD'}
           </Link>
 
           {/* Desktop Navigation */}
@@ -73,7 +74,7 @@ const NavBar: React.FC = () => {
               className="inline-flex items-center gap-2 bg-olive text-white px-4 py-2 rounded-full hover:bg-olive-dark transition-colors"
             >
               <Phone size={20} />
-              {textContent?.contactInfo.phone || '+216 58 415 520'}
+              {textContent?.contactInfo.phone || '+216 96 794 242'}
             </a>
           </div>
 
@@ -119,7 +120,7 @@ const NavBar: React.FC = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               <Phone size={18} />
-              {textContent?.contactInfo.phone || '+216 58 415 520'}
+              {textContent?.contactInfo.phone || '+216 96 794 242'}
             </a>
           </div>
         )}

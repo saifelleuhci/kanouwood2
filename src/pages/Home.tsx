@@ -134,9 +134,16 @@ const Home: React.FC = () => {
           <h3 className="text-xl text-center mb-8">
             {textContent?.natural?.subtitle || 'Bois d\'olivier naturel'}
           </h3>
-          <p className="text-gray-700 max-w-3xl mx-auto text-center">
-            {textContent?.natural?.content || 'Le bois d\'olivier est une matière naturelle, un bois très compact et très résistant.'}
-          </p>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <p className="text-gray-700 max-w-3xl mx-auto text-center md:text-left">
+              {textContent?.natural?.content || 'Le bois d\'olivier est une matière naturelle, un bois très compact et très résistant.'}
+            </p>
+            <img
+              src="/files/logo.jpeg"
+              alt="Socrate Wood"
+              className="w-60 mx-auto md:mx-0 rounded-full object-cover shadow-lg"
+            />
+          </div>
         </div>
       </section>
 

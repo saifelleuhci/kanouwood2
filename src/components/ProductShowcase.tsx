@@ -67,16 +67,7 @@ const ProductShowcase: React.FC = () => {
               />
             </div>
             <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-              <p className="text-gray-600 mb-4 line-clamp-2">
-                {product.description}
-              </p>
-              <Link
-                to={`/products/${product.id}`}
-                className="text-black hover:text-gray-700 font-medium"
-              >
-                Voir détails
-              </Link>
+              <h3 className="text-xl font-semibold text-center py-4">{product.name}</h3>
             </div>
           </div>
         ))}

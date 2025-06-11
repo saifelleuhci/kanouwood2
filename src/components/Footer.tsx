@@ -53,18 +53,6 @@ const Footer: React.FC = () => {
                 <Phone size={18} />
                 {textContent?.contactInfo.phone || '+216 58 415 520'}
               </a>
-              <a href={`mailto:${textContent?.contactInfo.email}`} className="flex items-center gap-2 text-gray-200 hover:text-olive-light transition-colors">
-                <Mail size={18} />
-                {textContent?.contactInfo.email || 'contact@oliviawood.com'}
-              </a>
-              <div className="flex items-center gap-2 text-gray-200">
-                <MapPin size={18} />
-                {textContent?.contactInfo.address || '123 Rue du Bois, 75000 Paris, France'}
-              </div>
-              <div className="flex items-center gap-2 text-gray-200">
-                <Clock size={18} />
-                {textContent?.contactInfo.hours || 'Lun-Sam: 9h-18h'}
-              </div>
             </div>
           </div>
 
@@ -90,7 +78,7 @@ const Footer: React.FC = () => {
 
         {/* Copyright */}
         <div className="border-t border-olive mt-8 pt-8 text-center text-gray-300">
-          <p>{textContent?.footer.rights || '© 2024 KanouOliviaWood. Tous droits réservés.'}</p>
+          <p>{textContent?.footer.rights || ' 2025 SOCRATE WOOD. Tous droits réservés.'}</p>
         </div>
       </div>
     </footer>

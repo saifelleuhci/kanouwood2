@@ -73,12 +73,12 @@ export async function setupDatabase() {
       const { error: insertDetailsError } = await supabase
         .from('details')
         .insert([{
-          phone_number: '+1234567890',
-          catalog_url: 'https://example.com/catalog.pdf',
+          phone_number: '+216 96 794 242',
+          catalog_url: '/files/CATALOGUE SOCRATE WOOD.pdf',
           hero_images: [
-            'https://example.com/hero1.jpg',
-            'https://example.com/hero2.jpg',
-            'https://example.com/hero3.jpg'
+            '/files/WhatsApp Image 2025-06-07 at 20.40.28.jpeg',
+            '/files/WhatsApp Image 2025-06-07 at 20.40.31.jpeg',
+            '/files/logo.jpeg'
           ]
         }]);
 

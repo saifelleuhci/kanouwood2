@@ -3,10 +3,7 @@ import { Database } from '../types/database.types';
 type Product = Database['public']['Tables']['products']['Row'];
 
 export const categories = [
-  { id: 'all', name: 'All' },
-  { id: 'kitchen', name: 'Kitchen' },
-  { id: 'utensils', name: 'Utensils' },
-  { id: 'decoration', name: 'Decoration' }
+  { id: 'all', name: 'All' }
 ];
 
 export const filterProductsByCategory = (products: Product[], category: string): Product[] => {

@@ -35,12 +35,6 @@ const LandingPage: React.FC = () => {
     }
   };
 
-  const handleCall = () => {
-    if (details?.phone_number) {
-      window.location.href = `tel:${details.phone_number}`;
-    }
-  };
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!details) return <div>No details found</div>;
@@ -62,17 +56,18 @@ const LandingPage: React.FC = () => {
           <div className="relative h-full flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Welcome to Olivia Wood
+                Welcome to SOCRATE WOOD
               </h1>
               <p className="text-xl md:text-2xl mb-8">
                 Discover our collection of handcrafted furniture
               </p>
-              <button
-                onClick={handleCall}
+              <a
+                href={details.catalog_url.replace(/ /g, '%20')}
+                download
                 className="bg-white text-black px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
               >
-                Call Now
-              </button>
+                Télécharger le Catalogue
+              </a>
             </div>
           </div>
         </section>

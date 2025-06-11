@@ -21,10 +21,8 @@ const HeroSection = () => {
     loadTextContent();
   }, []);
 
-  const triggerCatalogDownload = () => {
-    // In a real app, this would download a catalog
-    console.log('Downloading catalog...');
-  };
+  // Catalogue path stored in public/files.
+  const catalogPath = import.meta.env.BASE_URL + 'files/CATALOGUE%20SOCRATE%20WOOD.pdf';
 
   const scrollToAtelier = () => {
     const atelierSection = document.getElementById('atelier');
@@ -80,12 +78,13 @@ const HeroSection = () => {
           </h2>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 animate-slide-up opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            <button 
-              onClick={triggerCatalogDownload}
-              className="btn-primary bg-white bg-opacity-20 text-white hover:bg-olive hover:border-olive"
+            <a
+              href={catalogPath}
+              download
+              className="btn-primary bg-white bg-opacity-20 text-white hover:bg-olive hover:border-olive text-center"
             >
               {textContent?.hero.ctaCatalog || 'Télécharger le Catalogue'}
-            </button>
+            </a>
             
             <button onClick={scrollToAtelier} className="text-white flex items-center justify-center gap-2 hover:text-olive transition-colors py-2">
               {textContent?.hero.ctaWorkshop || 'Découvrir notre atelier'} <ArrowDown size={16} />

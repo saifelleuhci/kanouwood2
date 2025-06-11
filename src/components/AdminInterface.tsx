@@ -16,12 +16,8 @@ export const AdminInterface: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [newProduct, setNewProduct] = useState<Partial<Product>>({
+  const [newProduct, setNewProduct] = useState<{ name: string }>({
     name: '',
-    description: '',
-    category: ['kitchen'],
-    featured: false,
-    image: '',
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const navigate = useNavigate();
@@ -87,53 +83,54 @@ export const AdminInterface: React.FC = () => {
     }
 
     try {
-      let imageUrl = newProduct.image;
-
-      // If a file is selected, upload it
-      if (newProduct.imageFile) {
-        const file = newProduct.imageFile;
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${Math.random()}.${fileExt}`;
-        const filePath = `products/${fileName}`;
-
-        const { error: uploadError } = await supabase.storage
-          .from('product-images')
-          .upload(filePath, file);
-
-        if (uploadError) throw uploadError;
-
-        const { data: { publicUrl } } = supabase.storage
-          .from('product-images')
-          .getPublicUrl(filePath);
-
-        imageUrl = publicUrl;
+      if (!imageFile) {
+        setError('Please select an image file');
+        return;
       }
 
-      const { error } = await supabase
+      // Upload the image file
+      const fileExt = imageFile.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `products/${fileName}`;
+
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('product-images')
+        .upload(filePath, imageFile);
+
+      console.log('Image upload result:', uploadData, uploadError);
+      if (uploadError) throw uploadError;
+
+      const { data: publicUrlData, error: publicUrlError } = supabase.storage
+        .from('product-images')
+        .getPublicUrl(filePath);
+      console.log('Get public URL result:', publicUrlData, publicUrlError);
+      if (publicUrlError) throw publicUrlError;
+
+      const imageUrl = publicUrlData.publicUrl;
+      if (!imageUrl) {
+        setError('Failed to get public URL for uploaded image');
+        return;
+      }
+
+      const { data: insertData, error: insertError } = await supabase
         .from('products')
         .insert([{
           name: newProduct.name,
-          description: newProduct.description,
           image: imageUrl,
-          category: [newProduct.category],
-          featured: newProduct.featured
         }]);
+      console.log('Insert result:', insertData, insertError);
 
-      if (error) throw error;
+      if (insertError) throw insertError;
 
-      setNewProduct({
-        name: '',
-        description: '',
-        image: '',
-        category: '',
-        featured: false,
-        imageFile: null
-      });
+      setNewProduct({ name: '' });
+      setImageFile(null);
       fetchProducts();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to add product');
+    } catch (err: any) {
+      console.error('Add product error:', err);
+      setError(err?.message || JSON.stringify(err) || 'Failed to add product');
     }
   };
+
 
   const handleUpdateProduct = async (id: string, updates: Partial<Product>) => {
     try {
@@ -227,57 +224,21 @@ export const AdminInterface: React.FC = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="description">Description</Label>
-                    <Textarea
-                      id="description"
-                      value={newProduct.description}
-                      onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="image">Image URL</Label>
-                    <Input
-                      id="image"
-                      value={newProduct.image}
-                      onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="category">Category</Label>
-                    <select
-                      id="category"
-                      value={newProduct.category}
-                      onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
-                      className="w-full p-2 border rounded-md"
-                      required
-                    >
-                      <option value="kitchen">Kitchen</option>
-                      <option value="utensils">Utensils</option>
-                      <option value="decoration">Decoration</option>
-                    </select>
-                  </div>
-                  <div className="flex items-center space-x-2">
+                    <Label htmlFor="imageFile">Product Image</Label>
                     <input
-                      type="checkbox"
-                      id="featured"
-                      checked={newProduct.featured}
-                      onChange={(e) => setNewProduct({ ...newProduct, featured: e.target.checked })}
+                      id="imageFile"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setImageFile(file);
+                        }
+                      }}
+                      className="p-2 border rounded"
+                      required
                     />
-                    <Label htmlFor="featured">Featured Product</Label>
                   </div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setNewProduct({ ...newProduct, imageFile: file });
-                      }
-                    }}
-                    className="p-2 border rounded"
-                  />
                   <Button type="submit" className="w-full">Add Product</Button>
                 </form>
               </CardContent>
@@ -300,12 +261,6 @@ export const AdminInterface: React.FC = () => {
                     <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                     <p className="text-gray-600 mb-4">{product.description}</p>
                     <div className="flex justify-between">
-                      <Button
-                        variant="outline"
-                        onClick={() => handleUpdateProduct(product.id, { featured: !product.featured })}
-                      >
-                        {product.featured ? "Unfeature" : "Feature"}
-                      </Button>
                       <Button
                         variant="destructive"
                         onClick={() => handleDeleteProduct(product.id)}

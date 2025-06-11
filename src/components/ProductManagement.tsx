@@ -1,21 +1,24 @@
 import { useState } from 'react';
-import { categories } from '@/data/products';
+import { supabase } from '@/lib/supabase';
 import type { Product } from '@/types/database.types';
-import { Folder, PlusCircle, Edit2, Trash2 } from 'lucide-react';
+import { PlusCircle, Edit2, Trash2 } from 'lucide-react';
 
 type ProductFormData = {
   name: string;
-  category: string;
-  image: string;
-  description: string;
   price: number;
-  featured: boolean;
+  image: string; // will store the URL after upload
+};
+
+type MinimalProduct = {
+  name: string;
+  price: number;
+  image: string;
 };
 
 type ProductManagementProps = {
-  products: Product[];
-  onAddProduct: (product: Omit<Product, 'id' | 'created_at' | 'updated_at'>) => Promise<void>;
-  onUpdateProduct: (id: string, updates: Partial<Omit<Product, 'id' | 'created_at' | 'updated_at'>>) => Promise<void>;
+  products: MinimalProduct[];
+  onAddProduct: (product: MinimalProduct) => Promise<void>;
+  onUpdateProduct: (id: string, updates: Partial<MinimalProduct>) => Promise<void>;
   onDeleteProduct: (id: string) => Promise<void>;
 };
 
@@ -24,52 +27,56 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [formData, setFormData] = useState<ProductFormData>({
     name: '',
-    category: 'kitchen',
-    image: '',
-    description: '',
     price: 0,
-    featured: false,
+    image: '',
   });
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+      [name]: value
     }));
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageFile(e.target.files[0]);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (editingProduct) {
-        await onUpdateProduct(editingProduct.id, {
+      let imageUrl = formData.image;
+      if (imageFile) {
+        // Upload image to Supabase Storage
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${Date.now()}.${fileExt}`;
+        const { error } = await supabase.storage.from('product-images').upload(fileName, imageFile);
+        if (error) throw error;
+        imageUrl = supabase.storage.from('product-images').getPublicUrl(fileName).publicURL;
+      }
+      if (editingProduct && (editingProduct as any).id) {
+        await onUpdateProduct((editingProduct as any).id, {
           name: formData.name,
-          category: formData.category,
-          image: formData.image,
-          description: formData.description,
           price: formData.price,
-          featured: formData.featured,
+          image: imageUrl,
         });
       } else {
         await onAddProduct({
           name: formData.name,
-          category: formData.category,
-          image: formData.image,
-          description: formData.description,
           price: formData.price,
-          featured: formData.featured,
+          image: imageUrl,
         });
       }
-
       setFormData({
         name: '',
-        category: 'kitchen',
-        image: '',
-        description: '',
         price: 0,
-        featured: false,
+        image: '',
       });
+      setImageFile(null);
       setEditingProduct(null);
       setIsFormOpen(false);
     } catch (error) {
@@ -77,16 +84,14 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
     }
   };
 
-  const handleEdit = (product: Product) => {
+  const handleEdit = (product: MinimalProduct & { id?: string }) => {
     setEditingProduct(product);
     setFormData({
       name: product.name,
-      category: product.category,
-      image: product.image,
-      description: product.description,
       price: product.price,
-      featured: product.featured,
+      image: product.image,
     });
+    setImageFile(null);
     setIsFormOpen(true);
   };
 
@@ -106,12 +111,10 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
             setEditingProduct(null);
             setFormData({
               name: '',
-              category: 'kitchen',
-              image: '',
-              description: '',
               price: 0,
-              featured: false,
+              image: '',
             });
+            setImageFile(null);
             setIsFormOpen(!isFormOpen);
           }}
         >
@@ -137,32 +140,6 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
                 />
               </div>
               <div>
-                <label htmlFor="category" className="block text-sm font-medium mb-1">Catégorie</label>
-                <select
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                >
-                  {categories.map(category => (
-                    <option key={category.id} value={category.id}>{category.name}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label htmlFor="image" className="block text-sm font-medium mb-1">URL de l'image</label>
-                <input
-                  type="url"
-                  id="image"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                  required
-                />
-              </div>
-              <div>
                 <label htmlFor="price" className="block text-sm font-medium mb-1">Prix</label>
                 <input
                   type="number"
@@ -174,28 +151,21 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
                   required
                 />
               </div>
-              <div className="flex items-center">
+              <div>
+                <label htmlFor="image" className="block text-sm font-medium mb-1">Image du produit</label>
                 <input
-                  type="checkbox"
-                  id="featured"
-                  name="featured"
-                  checked={formData.featured}
-                  onChange={handleChange}
-                  className="mr-2"
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  required={!editingProduct}
                 />
-                <label htmlFor="featured" className="text-sm font-medium">Produit en vedette</label>
+                {formData.image && (
+                  <img src={formData.image} alt="Preview" className="mt-2 h-24 object-contain border rounded" />
+                )}
               </div>
-            </div>
-            <div>
-              <label htmlFor="description" className="block text-sm font-medium mb-1">Description</label>
-              <textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md h-40"
-                required
-              />
             </div>
           </div>
 
@@ -246,21 +216,15 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
         <div>
           <h4 className="font-medium mb-2">Aperçu des produits ({products.length})</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {products.slice(0, 8).map(product => (
-              <div key={product.id} className="bg-white p-2 rounded-md shadow-sm relative group">
+            {products.slice(0, 8).map((product: MinimalProduct & { id?: string }) => (
+              <div key={product.id || product.name} className="bg-white p-2 rounded-md shadow-sm relative group">
                 <img 
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-32 object-cover rounded-md mb-2"
                 />
                 <p className="text-sm font-medium truncate">{product.name}</p>
-                <p className="text-xs text-gray-500">{categories.find(c => c.id === product.category)?.name}</p>
-                <p className="text-sm font-medium text-olive">€{product.price.toFixed(2)}</p>
-                {product.featured && (
-                  <span className="absolute top-2 left-2 bg-olive text-white text-xs px-2 py-1 rounded-full">
-                    Vedette
-                  </span>
-                )}
+                <p className="text-xs text-gray-500">{product.price} €</p>
                 <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={() => handleEdit(product)}
@@ -269,7 +233,7 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
                     <Edit2 size={16} className="text-olive" />
                   </button>
                   <button
-                    onClick={() => handleDelete(product.id)}
+                    onClick={() => product.id && handleDelete(product.id)}
                     className="p-1 bg-white/80 rounded-full hover:bg-white transition-colors"
                   >
                     <Trash2 size={16} className="text-red-500" />

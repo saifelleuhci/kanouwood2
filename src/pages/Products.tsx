@@ -113,29 +113,20 @@ const Products: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
-              <div 
-                key={product.id} 
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+              <div
+                key={product.id}
+                className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
               >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative aspect-square">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {Array.isArray(product.category) && product.category.map((cat) => (
-                      <span
-                        key={cat}
-                        className="px-2 py-1 bg-olive-light text-olive-dark rounded-full text-sm"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
+                  <h3 className="text-xl font-semibold text-center py-4">{product.name}</h3>
                 </div>
               </div>
             ))}

@@ -36,7 +36,7 @@ const AtelierSection = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent z-10"></div>
                 <img 
-                  src="https://i.ibb.co/RTNCmv7F/2.png" 
+                  src="/files/WhatsApp%20Image%202025-06-07%20at%2020.40.28.jpeg" 
                   alt="Qualité de fabrication" 
                   className="w-full h-72 object-cover"
                 />
@@ -59,7 +59,7 @@ const AtelierSection = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent z-10"></div>
                 <img 
-                  src="https://i.ibb.co/PZQ7Ttjy/1.png" 
+                  src="/files/WhatsApp%20Image%202025-06-07%20at%2020.40.31.jpeg" 
                   alt="Prix d'atelier" 
                   className="w-full h-72 object-cover"
                 />

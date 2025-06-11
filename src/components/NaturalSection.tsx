@@ -33,9 +33,9 @@ const NaturalSection = () => {
           <div className="md:w-1/2">
             <div className="relative overflow-hidden rounded-lg shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1551907234-fb773fb08a2a?q=80&w=1974&auto=format&fit=crop" 
-                alt="Bois d'olivier naturel" 
-                className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+                src="/logo.jpeg" 
+                alt="Socrate Wood Logo" 
+                className="w-full h-auto object-contain transition-transform duration-700 hover:scale-105 bg-white"
               />
             </div>
           </div>

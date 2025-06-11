@@ -1,5 +1,5 @@
 # Header
-header_logo: KanouOliviaWood
+header_logo: SOCRATE WOOD
 header_home: Accueil
 header_products: Produits
 
@@ -39,7 +39,7 @@ contact_title: Contactez-nous
 contact_content: Pour toute question ou commande spéciale, n'hésitez pas à nous contacter. Nous sommes à votre écoute pour réaliser vos projets sur mesure.
 
 # Contact Information
-phone_number: +216 58 415 520
+phone_number: +216 96 794 242
 email: contact@oliviawood.com
 address: 123 Rue du Bois, 75000 Paris, France
 hours: Lun-Sam: 9h-18h
@@ -48,7 +48,7 @@ hours: Lun-Sam: 9h-18h
 cta_title: Intéressé par nos produits ?
 cta_content: Contactez-nous pour plus d'informations sur nos produits en bois d'olivier. Notre équipe est à votre disposition pour répondre à toutes vos questions.
 cta_button: Appelez-nous maintenant
-cta_phone: +216 58 415 520
+cta_phone: +216 96 794 242
 
 # Footer
 footer_about_title: À propos
@@ -56,4 +56,4 @@ footer_about_content: Votre spécialiste en artisanat de bois de qualité.
 footer_contact_title: Contact
 footer_contact_content: Besoin d'informations ? Contactez-nous !
 footer_quick_links_title: Liens Rapides
-footer_rights: © 2024 KanouOliviaWood. Tous droits réservés. 
+footer_rights:  2025 SOCRATE WOOD. Tous droits réservés.
