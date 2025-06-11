@@ -36,7 +36,7 @@ const AtelierSection = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent z-10"></div>
                 <img 
-                  src="/files/WhatsApp%20Image%202025-06-07%20at%2020.40.28.jpeg" 
+                  src="/WhatsApp Image 2025-06-07 at 20.40.28.jpeg" 
                   alt="Qualité de fabrication" 
                   className="w-full h-72 object-cover"
                 />
@@ -44,6 +44,9 @@ const AtelierSection = () => {
               </div>
             </div>
             <div className="text-center md:text-right max-w-md">
+              <a href="/public/CATALOGUE SOCRATE WOOD.pdf" download className="mt-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
+                Télécharger le Catalogue
+              </a>
               <h3 className="text-2xl font-playfair text-olive-dark mb-3">
                 {textContent?.workshop.qualityTitle || 'QUALITÉ DE FABRICATION'}
               </h3>
@@ -59,7 +62,7 @@ const AtelierSection = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent z-10"></div>
                 <img 
-                  src="/files/WhatsApp%20Image%202025-06-07%20at%2020.40.31.jpeg" 
+                  src="/public/WhatsApp Image 2025-06-07 at 20.40.31.jpeg" 
                   alt="Prix d'atelier" 
                   className="w-full h-72 object-cover"
                 />
@@ -67,6 +70,9 @@ const AtelierSection = () => {
               </div>
             </div>
             <div className="text-center md:text-left max-w-md">
+              <a href="/public/CATALOGUE SOCRATE WOOD.pdf" download className="mt-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
+                Télécharger le Catalogue
+              </a>
               <h3 className="text-2xl font-playfair text-olive-dark mb-3">
                 {textContent?.workshop.priceTitle || 'PRIX D\'ATELIER'}
               </h3>
