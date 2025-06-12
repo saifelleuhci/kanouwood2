@@ -22,7 +22,7 @@ const HeroSection = () => {
   }, []);
 
   // Catalogue path stored in public/files.
-  const catalogPath = "https://download1323.mediafire.com/kpafoqnslqhgD5n104HUBfKksYB5IQYRZIRj56RHP1P798nHsTBteY3Pge5F-kZhssrQCi0zpoTIW9eQ6iziTlhl5q7sOt1v-PjKI0pl3ICfq2LxotoQO18NUNFD1CogX-tcYSs7XXGFg-uEBGyNXtctyDhqa2AClSTTHJtl9P5-AA/q873a3qqlyd0of3/CATALOGUE+SOCRATE+WOOD+%282%29.pdf";
+  const catalogPath = "/catalogue-socrate-wood.pdf";
 
   const scrollToAtelier = () => {
     const atelierSection = document.getElementById('atelier');
