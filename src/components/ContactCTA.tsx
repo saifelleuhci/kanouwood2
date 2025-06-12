@@ -36,7 +36,7 @@ const ContactCTA = () => {
             {textContent?.cta.content || 'Contactez-nous pour plus d\'informations sur nos produits en bois d\'olivier. Notre équipe est à votre disposition pour répondre à toutes vos questions.'}
           </p>
           <a 
-            href={`tel:${textContent?.cta.phone || '+216 58 415 520'}`}
+            href={`tel:${textContent?.cta.phone || '+216 96 794 242'}`}
             className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
           >
             <Phone size={24} />
