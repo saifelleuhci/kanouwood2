@@ -185,7 +185,7 @@ const Admin = () => {
             >
               Login
             </button>
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            {error && <p className="text-olive text-sm mt-2">{error}</p>}
           </form>
         </div>
       </div>
@@ -206,7 +206,7 @@ const Admin = () => {
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center text-red-500">
+        <div className="text-center text-olive">
           <p>{error}</p>
         </div>
       </div>

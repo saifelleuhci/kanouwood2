@@ -44,13 +44,13 @@ const AtelierSection = () => {
               </div>
             </div>
             <div className="text-center md:text-right max-w-md">
-              <a href="/public/CATALOGUE SOCRATE WOOD.pdf" download className="mt-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
+              <a href="/CATALOGUE SOCRATE WOOD.pdf" download className="mt-4 mb-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
                 Télécharger le Catalogue
               </a>
               <h3 className="text-2xl font-playfair text-olive-dark mb-3">
                 {textContent?.workshop.qualityTitle || 'QUALITÉ DE FABRICATION'}
               </h3>
-              <p className="text-base text-gray-700 leading-relaxed">
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
                 {textContent?.workshop.qualityContent || 'Nos produits sont travaillés à l\'unité avec une exigence de qualité, fait-main, un savoir-faire unique transmis de génération en génération.'}
               </p>
             </div>
@@ -70,13 +70,13 @@ const AtelierSection = () => {
               </div>
             </div>
             <div className="text-center md:text-left max-w-md">
-              <a href="/public/CATALOGUE SOCRATE WOOD.pdf" download className="mt-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
+              <a href="/CATALOGUE SOCRATE WOOD.pdf" download className="mt-4 mb-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
                 Télécharger le Catalogue
               </a>
               <h3 className="text-2xl font-playfair text-olive-dark mb-3">
                 {textContent?.workshop.priceTitle || 'PRIX D\'ATELIER'}
               </h3>
-              <p className="text-base text-gray-700 leading-relaxed">
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
                 {textContent?.workshop.priceContent || 'Nos prix sont réfléchis et étudiés selon la pièce, ses dimensions et la complexité de sa réalisation dans notre atelier artisanal.'}
               </p>
             </div>

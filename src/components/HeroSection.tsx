@@ -22,7 +22,7 @@ const HeroSection = () => {
   }, []);
 
   // Catalogue path stored in public/files.
-  const catalogPath = import.meta.env.BASE_URL + 'files/CATALOGUE%20SOCRATE%20WOOD.pdf';
+  const catalogPath = "/CATALOGUE SOCRATE WOOD.pdf";
 
   const scrollToAtelier = () => {
     const atelierSection = document.getElementById('atelier');

@@ -236,7 +236,7 @@ const ProductManagement = ({ products, onAddProduct, onUpdateProduct, onDeletePr
                     onClick={() => product.id && handleDelete(product.id)}
                     className="p-1 bg-white/80 rounded-full hover:bg-white transition-colors"
                   >
-                    <Trash2 size={16} className="text-red-500" />
+                    <Trash2 size={16} className="text-olive" />
                   </button>
                 </div>
               </div>

@@ -35,7 +35,7 @@ const Home: React.FC = () => {
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-red-600">{error}</div>
+        <div className="text-olive">{error}</div>
       </div>
     );
   }
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <a 
-              href="/catalog.pdf"
+              href="/CATALOGUE SOCRATE WOOD.pdf"
               className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
             >
               <Download size={24} />

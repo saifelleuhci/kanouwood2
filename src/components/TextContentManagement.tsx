@@ -187,7 +187,7 @@ const TextContentManagement = ({ onSaveContent }: TextContentManagementProps) =>
                   </button>
                   <button
                     onClick={() => handleDelete(content.id)}
-                    className="p-1 text-red-500 hover:text-red-600 transition-colors"
+                    className="p-1 text-olive hover:text-olive transition-colors"
                   >
                     Supprimer
                   </button>

@@ -53,7 +53,7 @@ const NaturalSection = () => {
             </p>
             <div className="text-center md:text-left">
               <a 
-                href="/catalogue.pdf"
+                href="/CATALOGUE SOCRATE WOOD.pdf"
                 className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"

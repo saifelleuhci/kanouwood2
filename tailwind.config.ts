@@ -65,9 +65,9 @@ export default {
 				},
 				// Custom colors for wood theme
 				olive: {
-					light: '#9AAD98',
-					DEFAULT: '#839C80',
-					dark: '#576855'
+					light: '#543715',
+					DEFAULT: '#543715',
+					dark: '#543715'
 				},
 				wood: {
 					light: '#E8D5C4',

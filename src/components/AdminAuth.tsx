@@ -66,7 +66,7 @@ export const AdminAuth = () => {
                 disabled={loading}
                 required
               />
-              {error && <p className="text-red-500 text-sm">{error}</p>}
+              {error && <p className="text-olive text-sm">{error}</p>}
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Verifying..." : "Access Admin"}
