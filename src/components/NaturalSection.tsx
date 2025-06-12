@@ -53,7 +53,7 @@ const NaturalSection = () => {
             </p>
             <div className="text-center md:text-left">
               <a 
-                href="https://download1323.mediafire.com/um7q0rie7angJkaV1AyqKrrZ74k_Fvtogu_NX22wvxjYPvPIQKTy22waKv9pwvEgjY6izHA3Rh2_H4oVikYlvs8kpcHLXsErbsFiEj0I4da7LzXVeqWhDCVGZucJjzvCYyGGpJkiRc5vx45L0js9SDsM-rw7lWcTPM__day_B0vreQ/q873a3qqlyd0of3/CATALOGUE+SOCRATE+WOOD+%282%29.pdf"
+                href="/catalogue-socrate-wood.pdf"
                 className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"

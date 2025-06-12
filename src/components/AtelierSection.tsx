@@ -44,7 +44,7 @@ const AtelierSection = () => {
               </div>
             </div>
             <div className="text-center md:text-right max-w-md">
-              <a href="https://download1323.mediafire.com/um7q0rie7angJkaV1AyqKrrZ74k_Fvtogu_NX22wvxjYPvPIQKTy22waKv9pwvEgjY6izHA3Rh2_H4oVikYlvs8kpcHLXsErbsFiEj0I4da7LzXVeqWhDCVGZucJjzvCYyGGpJkiRc5vx45L0js9SDsM-rw7lWcTPM__day_B0vreQ/q873a3qqlyd0of3/CATALOGUE+SOCRATE+WOOD+%282%29.pdf" download className="mt-4 mb-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
+              <a href="/catalogue-socrate-wood.pdf" download className="mt-4 mb-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
                 Télécharger le Catalogue
               </a>
               <h3 className="text-2xl font-playfair text-olive-dark mb-3">
@@ -70,7 +70,7 @@ const AtelierSection = () => {
               </div>
             </div>
             <div className="text-center md:text-left max-w-md">
-              <a href="https://download1323.mediafire.com/um7q0rie7angJkaV1AyqKrrZ74k_Fvtogu_NX22wvxjYPvPIQKTy22waKv9pwvEgjY6izHA3Rh2_H4oVikYlvs8kpcHLXsErbsFiEj0I4da7LzXVeqWhDCVGZucJjzvCYyGGpJkiRc5vx45L0js9SDsM-rw7lWcTPM__day_B0vreQ/q873a3qqlyd0of3/CATALOGUE+SOCRATE+WOOD+%282%29.pdf" download className="mt-4 mb-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
+              <a href="/catalogue-socrate-wood.pdf" download className="mt-4 mb-4 inline-block bg-olive-dark text-white px-6 py-2 rounded-full hover:bg-olive hover:scale-105 transition-transform">
                 Télécharger le Catalogue
               </a>
               <h3 className="text-2xl font-playfair text-olive-dark mb-3">
