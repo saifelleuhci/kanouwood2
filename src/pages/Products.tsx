@@ -140,7 +140,7 @@ const Products: React.FC = () => {
               Notre équipe est à votre disposition pour répondre à toutes vos questions.
             </p>
             <a 
-              href="tel:+1234567890" 
+              href="tel:+21696794242" 
               className="inline-flex items-center gap-2 bg-olive text-white px-6 py-3 rounded-full text-lg hover:bg-olive-dark transition-colors"
             >
               <Phone size={24} />

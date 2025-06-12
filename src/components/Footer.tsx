@@ -49,9 +49,9 @@ const Footer: React.FC = () => {
               {textContent?.footer.contactContent || 'Besoin d\'informations ? Contactez-nous !'}
             </p>
             <div className="space-y-2">
-                            <a href={`tel:${textContent?.contactInfo.phone}`} className="flex items-center justify-center md:justify-start gap-2 text-white hover:text-olive-light transition-colors">
+                            <a href="tel:+21696794242" className="flex items-center justify-center md:justify-start gap-2 text-white">
                 <Phone size={18} />
-                {textContent?.contactInfo.phone || '+216 58 415 520'}
+                +216 96 794 242
               </a>
             </div>
           </div>
